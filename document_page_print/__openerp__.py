@@ -34,7 +34,6 @@
     ],
     'depends': [
         'document_page',
-        'document_page_approval',
     ],
     'data': [
         'document_page_print.xml',

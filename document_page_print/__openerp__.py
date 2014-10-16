@@ -27,16 +27,17 @@
     'author': 'OpusVL',
     'website': 'http://opusvl.com/',
     'summary': 'Export document pages for printing',
-    
     'category': 'Knowledge',
-    
-    'description': """Export document pages for printing,
+    'description': """Export document pages for printing
 """,
     'images': [
     ],
     'depends': [
+        'document_page',
+        'document_page_approval',
     ],
     'data': [
+        'document_page_print.xml',
     ],
     'demo': [
     ],

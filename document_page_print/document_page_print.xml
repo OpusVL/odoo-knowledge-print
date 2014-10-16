@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+<template id="document_page_print_template">
+    <t t-call="report.external_layout">
+        <div class="page">
+            <h1><span t-field="o.name"/></h1>
+            <div class="row">
+                <div id="version-block" class="col-xs-3 text-center">
+                    <strong id="version-label">Version:</strong>
+                    <p><span t-esc="len(o.history_ids)"/></p>
+                </div>
+                <div id="write-uid-block" class="col-xs-3 text-center">
+                    <strong id="write-uid-label">Last modified:</strong>
+                    <p><span t-field="o.write_date"/> by <span t-field="o.write_uid.name"/></p>
+                </div>
+            </div>
+            <hr />
+            <div t-raw="o.content"/>
+        </div>
+    </t>
+</template>
+
+<template id="document_page_print_container">
+    <t t-call="report.html_container">
+        <t t-foreach="doc_ids" t-as="doc_id">
+            <t t-raw="translate_doc(doc_id, doc_model, 'create_uid.partner_id.lang', 'document_page_print.document_page_print_template')"/>
+        </t>
+    </t>
+</template>
+
+<report 
+    id="document_page_print"
+    model="document.page"
+    string="Document"
+    report_type="qweb-pdf"
+    name="document_page_print.document_page_print_container"
+    file="document_page_print.document_page_print"
+    attachment="(object.name).replace('/','_')+('_v%d' % len(object.history_ids))+'.pdf'"
+/>
+    </data>
+</openerp>

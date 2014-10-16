@@ -18,6 +18,13 @@ Then add the directory to your addons_path:
 addons_path = all_the_usual,/opt/odoo-knowledge-print
 ```
 
+Then in your database, install the module `document_page_print`
+
+# Usage
+
+You will find an option in:
+
+Knowledge -> Pages -> (click the page you want to print) -> Print -> Document
 
 # Copyright and License
 

@@ -3,7 +3,9 @@
     <data>
 
 <template id="document_page_print_template">
+    <t t-call="report.html_container">
     <t t-call="report.external_layout">
+    <t t-foreach="docs" t-as="o">
         <div class="page">
             <h1><span t-field="o.name"/></h1>
             <div class="row">
@@ -25,22 +27,17 @@
             <div t-raw="o.content"/>
         </div>
     </t>
-</template>
-
-<template id="document_page_print_container">
-    <t t-call="report.html_container">
-        <t t-foreach="doc_ids" t-as="doc_id">
-            <t t-raw="translate_doc(doc_id, doc_model, 'create_uid.partner_id.lang', 'document_page_print.document_page_print_template')"/>
-        </t>
+    </t>
     </t>
 </template>
+
 
 <report 
     id="document_page_print"
     model="document.page"
     string="Document"
     report_type="qweb-pdf"
-    name="document_page_print.document_page_print_container"
+    name="document_page_print.document_page_print_template"
     file="document_page_print.document_page_print"
     attachment="(object.name).replace('/','_')+('_v%d' % len(object.history_ids))+'.pdf'"
 />

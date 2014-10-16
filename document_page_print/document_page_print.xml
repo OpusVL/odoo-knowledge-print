@@ -15,6 +15,11 @@
                     <strong id="write-uid-label">Last modified:</strong>
                     <p><span t-field="o.write_date"/> by <span t-field="o.write_uid.name"/></p>
                 </div>
+                <div id="uncontrolled-block" class="col-xs-3 text-center">
+                    <strong id="uncontrolled-label">Uncontrolled document</strong><br />
+                    <strong id="uncontrolled-print-date">Printing date:</strong>
+                    <p><span t-esc="time.strftime('%d/%m/%Y %H:%M:%S', time.localtime())"/></p>
+                </div>
             </div>
             <hr />
             <div t-raw="o.content"/>
